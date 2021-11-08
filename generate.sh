@@ -1,2 +1,5 @@
-#! /bin/bash
-java -jar .\swagger-codegen-cli.jar generate -l typescript-angular -i .\overseer.yaml
+#! /bin/bh
+java -jar swagger-codegen-cli.jar generate \
+ -i overseer.yaml \
+ -l typescript-angular \
+ -c options.json
