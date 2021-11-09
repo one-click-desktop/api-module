@@ -23,9 +23,3 @@
 #!docs/README.md
 
 README.md
-
-# sets wrong version of Typescript by default
-package.json
-
-# export * is not properly handled by webpack
-index.ts

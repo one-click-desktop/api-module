@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - git-action
 
 jobs:
   build:
@@ -15,8 +14,10 @@ jobs:
         with:
           node-version: 14.x
           registry-url: https://registry.npmjs.org/
-      - run: ./generate-npm.sh
-      - run: npm ci
-      - run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - run: bash ./generate-npm.sh
+      - run: npm install
+      - run: npm run build
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          access: public
+          token: ${{ secrets.NPM_TOKEN }}
