@@ -8,4 +8,4 @@ java -jar swagger-codegen-cli.jar generate \
  -c options-npm.json \
  --additional-properties npmVersion=`awk '/version:/ {print $2}' $SOURCE`
 
-patch < npm-matches/*
+patch < npm-patches/*
