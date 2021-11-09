@@ -1,0 +1,19 @@
+name: OpenAPI Check
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validateAPI:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: bash ./check-version.sh
+        env:
+          BRANCH: ${{ github.base_ref }}
+      - name: Validate OpenAPI definition
+        uses: char0n/swagger-editor-validate@v1.2.1
+        with:
+          definition-file: overseer.yaml
