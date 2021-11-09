@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - git-action
 
 jobs:
   build:
@@ -18,6 +17,7 @@ jobs:
       - run: bash ./generate-npm.sh
       - run: npm install
       - run: npm run build
-      - run: npm publish dist --access=public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          access: public
+          token: ${{ secrets.NPM_TOKEN }}
