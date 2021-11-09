@@ -1,7 +1,7 @@
 {
-  "name": "api-module",
+  "name": "@one-click-desktop/api-module",
   "version": "1.0.0",
-  "description": "swagger client for api-module",
+  "description": "swagger client for @one-click-desktop/api-module",
   "author": "Swagger Codegen Contributors",
   "keywords": [
     "swagger-client"
@@ -27,7 +27,7 @@
     "ng-packagr": "^11.0.2",
     "reflect-metadata": "^0.1.3",
     "rxjs": "^6.6.0",
-    "typescript": "~4.3.5",
+    "typescript": ">=4.0.0 <4.1.0",
     "zone.js": "^0.11.3"
   }
 }

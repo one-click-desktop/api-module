@@ -1,5 +1,4 @@
 {
-  "npmName": "api-module",
-  "npmVersion": "1.0.0",
+  "npmName": "@one-click-desktop/api-module",
   "ngVersion": "12.2.0"
 }
