@@ -7,3 +7,5 @@ java -jar swagger-codegen-cli.jar generate \
  -l typescript-angular \
  -c options-npm.json \
  --additional-properties npmVersion=`awk '/version:/ {print $2}' $SOURCE`
+
+patch < npm-matches/*
