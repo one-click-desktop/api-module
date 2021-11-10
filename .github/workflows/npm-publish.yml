@@ -29,10 +29,10 @@ jobs:
       - name: Build module
         run: npm run build
         working-directory: ./npm
-      - run: cd npm
       - name: Publish new version of module
         uses: JS-DevTools/npm-publish@v1
         with:
+          path: ./npm/package.json
           access: public
           token: ${{ secrets.NPM_TOKEN }}
           dry-run: true
