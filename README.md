@@ -1,6 +1,7 @@
 # api-module
 
-API module for OneClickDesktop frontend application
+API module for OneClickDesktop system.
+It generates client and server-side code and publishes it as nuget and npm package.
 
 ## Development
 
