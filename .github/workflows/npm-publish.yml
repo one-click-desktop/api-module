@@ -29,6 +29,6 @@ jobs:
       - name: Publish new version of module
         uses: JS-DevTools/npm-publish@v1
         with:
-          package: ./npm/package.json
+          package: ./npm/dist/package.json
           access: public
           token: ${{ secrets.NPM_TOKEN }}
