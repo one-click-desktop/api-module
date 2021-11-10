@@ -13,7 +13,12 @@ jobs:
       - run: bash ./check-version.sh
         env:
           BRANCH: ${{ github.base_ref }}
-      - name: Validate OpenAPI definition
-        uses: char0n/swagger-editor-validate@v1.2.1
+      - name: Setup Node
+        uses: actions/setup-node@v1
         with:
-          definition-file: overseer.yaml
+          node-version: 14.x
+          registry-url: https://registry.npmjs.org/
+      - name: Setup OpenAPI validator
+        run: npm install @openapitools/openapi-generator-cli -g
+      - name: Validate Schema
+        run: openapi-generator-cli validate -i overseer.yaml

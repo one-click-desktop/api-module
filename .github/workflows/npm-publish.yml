@@ -9,15 +9,25 @@ jobs:
   publish-npm:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup Node
+        uses: actions/setup-node@v1
         with:
           node-version: 14.x
           registry-url: https://registry.npmjs.org/
-      - run: bash ./generate-npm.sh
-      - run: npm install
-      - run: npm run build
-      - uses: JS-DevTools/npm-publish@v1
+      - name: Setup Openapi Generator
+        run: npm install @openapitools/openapi-generator-cli -g
+      - name: Generate clientside API
+        run: bash ./generate-npm.sh
+      - name: Move to generated api project
+        run: cd npm
+      - name: Install dependencies
+        run: npm install
+      - name: Build module
+        run: npm run build
+      - name: Publish new version of module
+        uses: JS-DevTools/npm-publish@v1
         with:
           access: public
           token: ${{ secrets.NPM_TOKEN }}
