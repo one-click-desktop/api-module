@@ -9,10 +9,18 @@ jobs:
   validateAPI:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: bash ./check-version.sh
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Find modified files
+        id: file_changes
+        uses: trilom/file-changes-action@v1.2.4
+        with:
+          output: " "
+      - name: Check if API version changed
+        run: bash ./check-version.sh
         env:
           BRANCH: ${{ github.base_ref }}
+          MODIFIED: ${{ steps.file_changes.outputs.files_modified }}
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
