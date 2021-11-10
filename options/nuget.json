@@ -1,0 +1,8 @@
+{
+  "buildTarget": "library",
+  "aspnetCoreVersion": "5.0",
+  "packageName": "OneClickDesktop.Api",
+  "packageTitle": "OneClickDesktop.Api",
+  "packageAuthors": "SmogorK WidomskiP",
+  "packageDescription": "Abstract implementation of OneClickDesktop server-side REST API." 
+}

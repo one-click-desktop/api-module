@@ -2,20 +2,17 @@
 
 SOURCE=overseer.yaml
 OUTPUT=nuget
+OPTIONS=options/nuget.json
 VERSION=`awk '/version:/ {print $2}' $SOURCE`
 
-if [ -f nuget ]
-then
-	rm -rf nuget
-fi
+rm -rf nuget
 
-java -jar swagger-codegen-cli.jar generate \
- -i $SOURCE \
- -l csharp \
- --api-package "Resources" \
- --model-package "Models" \
- --additional-properties packageVersion=$VERSION,packageName=OneClickDesktop.Api,netCoreProjectFile=true \
- -o $OUTPUT
+openapi-generator-cli generate \
+ -i overseer.yaml \
+ -g aspnetcore \
+ -o $OUTPUT \
+ -c $OPTIONS \
+ -p packageVersion=$VERSION
 
 if [ "$(ls -A patches/nuget)" ]
 then

@@ -5,10 +5,7 @@ OUTPUT=npm
 OPTIONS=options/npm.json
 VERSION=`awk '/version:/ {print $2}' $SOURCE`
 
-if [ -f npm ]
-then
-	rm -rf npm
-fi
+rm -rf $OUTPUT
 
 java -jar swagger-codegen-cli.jar generate \
  -i $SOURCE \
