@@ -19,7 +19,7 @@ jobs:
       - name: Setup Openapi Generator
         run: npm install @openapitools/openapi-generator-cli -g
       - name: Generate clientside API
-        run: bash ./generate-npm.sh
+        run: bash ./generate/npm.sh
       - name: Move to generated api project
         run: cd npm
       - name: Install dependencies
