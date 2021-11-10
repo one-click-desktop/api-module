@@ -5,10 +5,10 @@ OUTPUT=nuget
 OPTIONS=options/nuget.json
 VERSION=`awk '/version:/ {print $2}' $SOURCE`
 
-rm -rf nuget
+rm -rf $OUTPUT
 
 openapi-generator-cli generate \
- -i overseer.yaml \
+ -i $SOURCE \
  -g aspnetcore \
  -o $OUTPUT \
  -c $OPTIONS \
