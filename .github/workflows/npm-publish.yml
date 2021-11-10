@@ -1,9 +1,6 @@
 name: NPM Publish
 
 on:
-  pull_request:
-    branches:
-      - main
   push:
     branches:
       - main
@@ -35,4 +32,3 @@ jobs:
           package: ./npm/package.json
           access: public
           token: ${{ secrets.NPM_TOKEN }}
-          dry-run: true
