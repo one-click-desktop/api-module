@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   publish-nuget:
@@ -30,6 +27,6 @@ jobs:
       - name: Build and pack library to nuget
         run: dotnet pack -c Release
         working-directory: ./nuget/src/OneClickDesktop.Api
-      # - name: Push nuget to nuget.org
-      #   run: dotnet nuget push "bin/Release/OneClickDesktop.Api.*.nupkg" --api-key ${{ secrets.NUGET_TOKEN }} --source "github"
-      #   working-directory: ./nuget/src/OneClickDesktop.Api
+      - name: Push nuget to nuget.org
+        run: dotnet nuget push "bin/Release/OneClickDesktop.Api.*.nupkg" --api-key ${{ secrets.NUGET_TOKEN }} --source "https://api.nuget.org/v3/index.json"
+        working-directory: ./nuget/src/OneClickDesktop.Api
