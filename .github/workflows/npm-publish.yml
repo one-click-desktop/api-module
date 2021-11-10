@@ -1,6 +1,9 @@
 name: NPM Publish
 
 on:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - main
@@ -32,3 +35,4 @@ jobs:
         with:
           access: public
           token: ${{ secrets.NPM_TOKEN }}
+          dry-run: true
