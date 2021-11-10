@@ -20,14 +20,15 @@ jobs:
         run: npm install @openapitools/openapi-generator-cli -g
       - name: Generate clientside API
         run: bash ./generate/npm.sh
-      - name: Move to generated api project
-        run: cd npm
       - name: Install dependencies
         run: npm install
+        working-directory: ./npm
       - name: Build module
         run: npm run build
+        working-directory: ./npm
       - name: Publish new version of module
         uses: JS-DevTools/npm-publish@v1
         with:
           access: public
           token: ${{ secrets.NPM_TOKEN }}
+          entrypoint: ./npm
