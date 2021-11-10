@@ -1,0 +1,32 @@
+name: Nuget Publish
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish-nuget:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.x'
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          registry-url: https://registry.npmjs.org/
+      - name: Setup Openapi Generator
+        run: npm install @openapitools/openapi-generator-cli -g
+      - name: Generate serverside api
+        run: bash ./generate/nuget.sh
+      - name: Move to generated api project
+        run: cd nuget/src/OneClickDesktop.Api
+      - name: Build and pack library to nuget
+      - run: dotnet pack
+      - name: Push nuget to nuget.org
+        run: dotnet nuget push "bin/Release/OctocatApp.*.nupkg" --api-key ${{ secrets.NUGET_TOKEN }} --source "github"
