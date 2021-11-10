@@ -2,17 +2,20 @@
 
 SOURCE=overseer.yaml
 OUTPUT=nuget
-OPTIONS=options/nuget.json
+VERSION=`awk '/version:/ {print $2}' $SOURCE`
+
+if [ -f nuget ]
+then
+	rm -rf nuget
+fi
 
 java -jar swagger-codegen-cli.jar generate \
- -i overseer.yaml \
+ -i $SOURCE \
  -l csharp \
- --api-package OneClickDesktop.Api.Resources \
- --model-package OneClickDesktop.Models.Resources \
- -DmodelTests=false \
- -DapiTests=false \
- -DpackageName='OneClickDesktop.OdsApi.Sdk' \
- -o nuget
+ --api-package "Resources" \
+ --model-package "Models" \
+ --additional-properties packageVersion=$VERSION,packageName=OneClickDesktop.Api,netCoreProjectFile=true \
+ -o $OUTPUT
 
 if [ "$(ls -A patches/nuget)" ]
 then
