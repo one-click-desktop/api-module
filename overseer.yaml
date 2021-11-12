@@ -1,7 +1,7 @@
 openapi: 3.0.3
 
 info:
-  version: 1.0.3
+  version: 1.0.4
   title: Overseer
   license:
     name: MIT
@@ -158,7 +158,7 @@ components:
       properties:
         token:
           type: string
-    Machines:
+    Machine:
       description: Bundles machine type with it's amount
       required:
         - type
@@ -208,9 +208,13 @@ components:
         address:
           $ref: "#/components/schemas/IpAddress"
         running:
-          $ref: "#/components/schemas/Machines"
+          type: array
+          items:
+            $ref: "#/components/schemas/Machine"
         free:
-          $ref: "#/components/schemas/Machines"
+          type: array
+          items:
+            $ref: "#/components/schemas/Machine"
         resources:
           $ref: "#/components/schemas/Resources"
     Resources:
@@ -279,7 +283,7 @@ components:
           schema:
             type: array
             items:
-              $ref: "#/components/schemas/Machines"
+              $ref: "#/components/schemas/Machine"
     ResourcesResponse:
       description: Response containing servers and resources for admin panel
       content:
