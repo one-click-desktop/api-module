@@ -17,6 +17,7 @@ openapi-generator-cli generate \
 if [ "$(ls -A patches/nuget)" ]
 then
 	for i in patches/nuget/* ; do
-	   patch -d $OUTPUT < $i
-	done 
+		echo $i
+	   patch -p1 -d $OUTPUT < $i
+	done
 fi

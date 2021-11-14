@@ -1,0 +1,26 @@
+--- nuget/src/OneClickDesktop.Api/Controllers/SessionApi.cs	2021-11-14 17:21:33.684561700 +0100
++++ nuget/src/OneClickDesktop.Api/Controllers/SessionApi.cs	2021-11-14 17:17:39.052732000 +0100
+@@ -34,7 +34,6 @@
+         /// <response code="0">Generic error</response>
+         [HttpDelete]
+         [Route("/session/{sessionId}")]
+-        [Authorize]
+         [ValidateModelState]
+         [ProducesResponseType(statusCode: 200, type: typeof(string))]
+         [ProducesResponseType(statusCode: 401, type: typeof(Error))]
+@@ -50,7 +49,6 @@
+         /// <response code="0">Generic error</response>
+         [HttpPost]
+         [Route("/session")]
+-        [Authorize]
+         [Consumes("application/json")]
+         [ValidateModelState]
+         [ProducesResponseType(statusCode: 200, type: typeof(Session))]
+@@ -67,7 +65,6 @@
+         /// <response code="0">Generic error</response>
+         [HttpGet]
+         [Route("/session/{sessionId}")]
+-        [Authorize]
+         [ValidateModelState]
+         [ProducesResponseType(statusCode: 200, type: typeof(Session))]
+         [ProducesResponseType(statusCode: 401, type: typeof(Error))]

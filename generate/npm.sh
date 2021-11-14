@@ -15,6 +15,6 @@ openapi-generator-cli generate \
 if [ "$(ls -A patches/npm)" ]
 then
 	for i in patches/npm/* ; do
-	   patch -d $OUTPUT < $i
+	   patch -p1 -d $OUTPUT < $i
 	done
 fi
