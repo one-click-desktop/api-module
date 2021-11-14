@@ -24,3 +24,25 @@
          [ValidateModelState]
          [ProducesResponseType(statusCode: 200, type: typeof(Session))]
          [ProducesResponseType(statusCode: 401, type: typeof(Error))]
+diff -u nuget/src/OneClickDesktop.Api/Controllers/MachinesApi.cs modifications/MachinesApi.cs
+--- nuget/src/OneClickDesktop.Api/Controllers/MachinesApi.cs	2021-11-14 17:56:33.606323000 +0100
++++ nuget/src/OneClickDesktop.Api/Controllers/MachinesApi.cs	2021-11-14 18:07:11.725423300 +0100
+@@ -33,7 +33,6 @@
+         /// <response code="0">Generic error</response>
+         [HttpGet]
+         [Route("/machines")]
+-        [Authorize]
+         [ValidateModelState]
+         [ProducesResponseType(statusCode: 200, type: typeof(List<Machine>))]
+         [ProducesResponseType(statusCode: 401, type: typeof(Error))]
+diff -u nuget/src/OneClickDesktop.Api/Controllers/ResourcesApi.cs modifications/ResourcesApi.cs
+--- nuget/src/OneClickDesktop.Api/Controllers/ResourcesApi.cs	2021-11-14 17:56:33.616907400 +0100
++++ nuget/src/OneClickDesktop.Api/Controllers/ResourcesApi.cs	2021-11-14 18:07:16.592570700 +0100
+@@ -33,7 +33,6 @@
+         /// <response code="0">Generic error</response>
+         [HttpGet]
+         [Route("/resources")]
+-        [Authorize]
+         [ValidateModelState]
+         [ProducesResponseType(statusCode: 200, type: typeof(TotalResources))]
+         [ProducesResponseType(statusCode: 401, type: typeof(Error))]
