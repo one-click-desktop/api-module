@@ -12,7 +12,8 @@ openapi-generator-cli generate \
  -g aspnetcore \
  -o $OUTPUT \
  -c $OPTIONS \
- -p packageVersion=$VERSION
+ -p packageVersion=$VERSION \
+ --model-name-suffix DTO
 
 if [ "$(ls -A patches/nuget)" ]
 then
