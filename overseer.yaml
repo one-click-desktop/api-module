@@ -1,7 +1,7 @@
 openapi: 3.0.3
 
 info:
-  version: 1.0.6
+  version: 1.0.7
   title: Overseer
   license:
     name: MIT
@@ -170,11 +170,16 @@ components:
           type: integer
           format: int32
     MachineType:
-      description: Enum containing types of machines available in the system
-      type: string
-      enum:
-        - cpu
-        - gpu
+      description: Object containing name and code of single machine type
+      required:
+        - name
+        - code
+      properties:
+        name:
+          type: string
+        code:
+          type: integer
+          format: int32
     SessionStatus:
       description: Status of the session
       type: string
