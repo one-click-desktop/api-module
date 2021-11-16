@@ -4,5 +4,6 @@
   "packageName": "OneClickDesktop.Api",
   "packageTitle": "OneClickDesktop.Api",
   "packageAuthors": "SmogorK WidomskiP",
-  "packageDescription": "Abstract implementation of OneClickDesktop server-side REST API." 
+  "packageDescription": "Abstract implementation of OneClickDesktop server-side REST API.",
+  "enumValueSuffix": ""
 }

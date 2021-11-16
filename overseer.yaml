@@ -1,7 +1,7 @@
 openapi: 3.0.3
 
 info:
-  version: 1.0.7
+  version: 1.0.9
   title: Overseer
   license:
     name: MIT
@@ -154,10 +154,16 @@ components:
     Token:
       description: Authorization token
       required:
-        - Token
+        - token
+        - role
       properties:
         token:
           type: string
+        role:
+          type: string
+          enum:
+            - Admin
+            - User
     Machine:
       description: Bundles machine type with it's amount
       required:
@@ -270,7 +276,7 @@ components:
           schema:
             type: string
     LoginResponse:
-      description: Response containing token for authorization after successful login
+      description: Response containing token and role for authorization after successful login
       content:
         application/json:
           schema:
