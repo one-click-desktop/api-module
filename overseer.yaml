@@ -1,7 +1,7 @@
 openapi: 3.0.3
 
 info:
-  version: 1.0.9
+  version: 1.0.10
   title: Overseer
   license:
     name: MIT
@@ -184,8 +184,7 @@ components:
         name:
           type: string
         code:
-          type: integer
-          format: int32
+          type: string
     SessionStatus:
       description: Status of the session
       type: string
@@ -212,12 +211,9 @@ components:
         - free
         - resources
         - name
-        - address
       properties:
         name:
           type: string
-        address:
-          $ref: "#/components/schemas/IpAddress"
         running:
           type: array
           items:
